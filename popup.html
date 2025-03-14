@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EELU Login</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(0.95); } 100% { transform: scale(1); } }
+        body { width: 400px; max-width: 90%; padding: 30px; background: #1a1a1a; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); animation: fadeIn 0.5s ease-out; }
+        .logo { width: 80px; margin: 0 auto 25px; display: block; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); animation: pulse 2s infinite; }
+        h3 { color: #ffffff; text-align: center; margin-bottom: 30px; letter-spacing: 1px; }
+        .input-group { margin: 20px 0; position: relative; }
+        input { width: 92%; padding: 14px; border: 2px solid #3d3d3d; border-radius: 8px; background: #2d2d2d; color: #ffffff; font-size: 14px; transition: all 0.3s ease; }
+        input:focus { border-color: #5e35b1; outline: none; box-shadow: 0 0 0 2px rgba(94, 53, 177, 0.3); }
+        button { width: 100%; padding: 14px; background: #5e35b1; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); margin-top: 10px; }
+        button:hover { background: #3f1d8b; }
+        button:active { transform: scale(0.98); }
+        #status { margin-top: 15px; font-size: 13px; color: #888; text-align: center; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; }
+        .show-status { opacity: 1 !important; animation: fadeIn 0.3s ease; }
+        @keyframes jump { 0% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+        .button-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.main-btn {
+    flex: 1 1 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #5e35b1, #3f1d8b);
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(94, 53, 177, 0.4);
+}
+
+.main-btn:active {
+    transform: translateY(0);
+}
+
+.icon-btn {
+    flex: 1 1 30%;
+    position: relative;
+    background: #ff4444;
+    border: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.icon-btn:hover {
+    transform: rotate(-15deg) scale(1.1);
+}
+
+.icon-btn:active {
+    transform: rotate(-15deg) scale(0.95);
+}
+
+.delete-icon {
+    width: 69px;
+    height: 70px;
+    fill: white;
+    transition: transform 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.icon-btn:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+@keyframes btnPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.main-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    animation: btnPulse 0.6s ease;
+}
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="EEU Logo" class="logo">
+    <h3>EELU Login Helper</h3>
+    <div class="input-group">
+        <input type="text" id="username" placeholder="Username">
+    </div>
+    <div class="input-group">
+        <input type="password" id="password" placeholder="Password">
+    </div>
+    <div class="button-container">
+        <button id="loginBtn" class="main-btn">
+          Login
+        </button>
+      
+        <button id="clearCookiesBtn" class="icon-btn">
+            <img src="image.png" alt="Delete Icon" class="delete-icon">
+            <span class="tooltip">Clear Session</span>
+        </button>
+      </div>      <p id="status"></p>
+    <script src="popup.js"></script>
+</body>
+</html>
